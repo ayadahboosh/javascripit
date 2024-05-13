@@ -1,27 +1,25 @@
-const ages=[25, 18, 12, 16, 40];
-function processAges(ages) {
+function displaySongInfo(event) {
+  event.preventDefault();
+ 
+  const favSongName = document.getElementById("name").value;
+  const ytLink = document.getElementById("yt-link").value;
+  const songDescription = document.getElementById("description").value;
+  const listenedYear = document.getElementById("year").value;
   
-  let doubledAges=[];
- for(i of ages){
-  doubledAges.push(i*2);
- } 
-  console.log(doubledAges);
-
- ages.forEach(function(i) {
-    console.log(i);
-  });
-
- let adults = ages.filter(function(i){
-  return i>=18
- })
- console.log(adults);
+  const ytChange = document.createElement("iframe")
+  ytChange.getElementsById("display-yt").appendChild(ytChange)
+ 
+  document.getElementById("display-name").innerHTML = favSongName;
+  document.getElementById("display-yt").innerHTML = ytLink;
+  document.getElementById("display-description").innerHTML = songDescription;
+  document.getElementById("display-year").innerHTML = listenedYear;
   
-let ageStrings = ages.map (function(age){
-  return JSON.stringify(age)
-})
-console.log(ageStrings);
-
-  return { doubledAges, adults, ageStrings };
-}
-processAges(ages)
-
+  const formHide = document.getElementById("get-info")
+  formHide.style.display = 'none'
+  const divShow = document.getElementById("display-area");
+  divShow.style.display = 'block';
+  
+  }
+  module.exports = {
+      displaySongInfo: displaySongInfo,
+  };
